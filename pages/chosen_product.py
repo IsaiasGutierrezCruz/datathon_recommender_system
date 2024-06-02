@@ -25,8 +25,9 @@ embedding_product_chosen = get_embedding_from_id(st.session_state.item)
 with st.spinner("Looking for products..."):
     top_similar = get_top_similar(
         embedding_product_chosen,
-        n=TOP_N,
+        n=TOP_N + 1,
     )
+    top_similar = [similar for similar in top_similar if similar != st.session_state.item]
     items = get_base_info(top_similar)
 
 
