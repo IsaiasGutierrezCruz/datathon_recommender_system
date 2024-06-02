@@ -1,9 +1,10 @@
-from functools import lru_cache
+import os
 
 import numpy as np
 from annoy import AnnoyIndex
 
-from src.constants import DEFAULT_EMBEDDINGS_PATH, EMBEDDINGS_SIZE
+from src.constants import DEFAULT_EMBEDDINGS_PATH, EMBEDDINGS_S3_URI, EMBEDDINGS_SIZE
+from src.model import download_embeddings
 
 database = None
 
@@ -13,6 +14,13 @@ def load_vector_database(embeddings_path: str = DEFAULT_EMBEDDINGS_PATH):
 
     if database:
         return
+
+    if not os.path.isfile(embeddings_path):
+        print("Downloading embeddings from internet")
+        download_embeddings(
+            remote_url=EMBEDDINGS_S3_URI,
+            dest_path=embeddings_path
+        )
 
     database = AnnoyIndex(EMBEDDINGS_SIZE, "angular")
     database.load(embeddings_path)
