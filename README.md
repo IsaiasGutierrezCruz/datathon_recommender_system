@@ -25,3 +25,8 @@ Run
 ```shell
 make run-web-app
 ```
+
+
+## Competition
+
+![Certificate of Second Place in the Datathon Dataverse 2024](doc/datathon_dataverse_mexico_2024.jpg)
