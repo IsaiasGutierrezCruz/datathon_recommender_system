@@ -8,3 +8,14 @@ install:
 		pip install -r requirements-dev.txt; \
 		pip install -r requirements.txt; \
 	)
+
+
+create-env:
+	@[ ! -f .env ] && cp .env.mock .env ||:;
+
+
+setup: create-env install
+
+
+run-web-app:
+	streamlit run app.py;

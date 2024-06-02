@@ -4,12 +4,13 @@
 - Get top recommendation fashion products from a natural language user's request.
 
 
-
 ## Setup
 
 ```shell
-make install
+make setup
 ```
+
+[Generate](https://aistudio.google.com/app/prompts/new_chat) a Google API KEY and paste it on `.env`
 
 
 ## Usage
@@ -21,6 +22,6 @@ source .venv/bin/activate
 ```
 
 Run
-```python
-python3 app.py
+```shell
+make run-web-app
 ```
