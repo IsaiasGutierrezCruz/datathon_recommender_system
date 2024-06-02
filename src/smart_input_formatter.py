@@ -1,7 +1,10 @@
 import os
+from functools import lru_cache
 
 from google.generativeai import GenerativeModel
 import google.generativeai as genai
+
+from src.constants import QUERIES_TO_USE_CACHE
 
 
 # Setup API KEY to use gemini models
@@ -17,6 +20,7 @@ instruct_transalation_prompt = (
 )
 
 
+@lru_cache(maxsize=QUERIES_TO_USE_CACHE)
 def smart_input_formatter(user_product_prompt : str):
     """Call an LLM to clean our user's input"""
     genai.configure(api_key=GOOGLE_API_KEY)

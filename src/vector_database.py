@@ -1,3 +1,5 @@
+from functools import lru_cache
+
 import numpy as np
 from annoy import AnnoyIndex
 
@@ -8,6 +10,10 @@ database = None
 
 def load_vector_database(embeddings_path: str = DEFAULT_EMBEDDINGS_PATH):
     global database
+
+    if database:
+        return
+
     database = AnnoyIndex(EMBEDDINGS_SIZE, "angular")
     database.load(embeddings_path)
 
