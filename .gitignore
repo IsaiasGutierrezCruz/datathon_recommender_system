@@ -163,7 +163,7 @@ cython_debug/
 
 # Misc
 .DS_Store
-
+exp.ipynb
 
 # model artifacts
 assets/models--sentence-transformers--all-mpnet-base-v2/
