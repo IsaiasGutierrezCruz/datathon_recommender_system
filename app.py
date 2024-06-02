@@ -15,7 +15,6 @@ load_dotenv()
 load_vector_database()
 
 
-
 def run():
     st.title("Fashion products")
     st.write("Fashion product matching from natural language prompts")
@@ -60,6 +59,18 @@ def run():
                     st.write(
                         f"Colors: {item.get('baseColour')}, {item.get('colour1')}"
                     )
+
+                    if st.button(f"View Product {item.get('id')}"):
+                        st.session_state.item = item.get('id')
+                        st.session_state.product_display_name = item.get('productDisplayName')
+                        st.session_state.link_image = item.get('link')
+                        st.session_state.article_type = item.get('articleType')
+                        st.session_state.gender = item.get('gender')
+                        st.session_state.base_colour = item.get('baseColour')
+                        st.session_state.colour1 = item.get('colour1')
+
+                        st.switch_page('pages/chosen_product.py')
+
                 cont += 1
 
 

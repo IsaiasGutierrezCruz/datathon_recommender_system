@@ -169,3 +169,5 @@ exp.ipynb
 assets/models--sentence-transformers--all-mpnet-base-v2/
 assets/.locks
 assets/clothes-embeddings.ann
+
+.python-version

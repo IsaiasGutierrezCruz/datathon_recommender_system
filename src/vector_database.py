@@ -14,3 +14,6 @@ def load_vector_database(embeddings_path: str = DEFAULT_EMBEDDINGS_PATH):
 
 def get_top_similar(query_embedding: np.ndarray, n: int):
     return database.get_nns_by_vector(query_embedding, n)
+
+def get_embedding_from_id(product_id: int):
+    return database.get_item_vector(product_id)
