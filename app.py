@@ -21,7 +21,7 @@ def run():
 
     product_prompt: str = st.text_input(
         "Search for a product, describe it...",
-        help="You can specify type, price, color, season, age range, etc.",
+        help="You can specify type, color, season, age range, etc.",
         max_chars=NUM_MAX_WORDS
     )
 
@@ -53,8 +53,9 @@ def run():
                 with col:
                     st.header(item.get("productDisplayName", "-"))
                     st.image(item.get("link"))
+                    price = f"| ${item.get('discountedPrice')}"
                     st.write(
-                        f"{item.get('articleType')} | {item.get('gender')}"
+                        f"{item.get('articleType')} | {item.get('gender')} {price}"
                     )
                     st.write(
                         f"Colors: {item.get('baseColour')}, {item.get('colour1')}"
@@ -68,6 +69,7 @@ def run():
                         st.session_state.gender = item.get('gender')
                         st.session_state.base_colour = item.get('baseColour')
                         st.session_state.colour1 = item.get('colour1')
+                        st.session_state.discounted_price = item.get('discountedPrice')
 
                         st.switch_page('pages/chosen_product.py')
 

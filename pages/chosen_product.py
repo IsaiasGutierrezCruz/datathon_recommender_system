@@ -46,8 +46,9 @@ for row in range(0, num_rows):
         with col:
             st.header(item.get("productDisplayName", "-"))
             st.image(item.get("link"))
+            price = f"| ${item.get('discountedPrice')}"
             st.write(
-                f"{item.get('articleType')} | {item.get('gender')}"
+                f"{item.get('articleType')} | {item.get('gender')} {price}"
             )
             st.write(
                 f"Colors: {item.get('baseColour')}, {item.get('colour1')}"
@@ -61,6 +62,7 @@ for row in range(0, num_rows):
                 st.session_state.gender = item.get('gender')
                 st.session_state.base_colour = item.get('baseColour')
                 st.session_state.colour1 = item.get('colour1')
+                st.session_state.discounted_price = price
 
                 st.switch_page('pages/chosen_product.py')
 
